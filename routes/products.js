@@ -53,6 +53,25 @@ router.post('/register', (req, res) => {
         })
 })
 
+//datail product get API
+router.get('/:productId', (req, res) => {
+    const id = req.params.productId
+    productModel
+        .findById(id)
+        .then(doc => {
+            res.json({
+                message: "get product data from " + id,
+                productInfo: doc
+            })
+        })
+        .catch(err => {
+            res.json({
+                message: err.message
+            })
+        })
+})
+
+
 //product data 업데이트하기
 router.put('/', (req, res) => {
     res.json({
