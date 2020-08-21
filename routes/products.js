@@ -10,8 +10,13 @@ router.get('/total', (req, res) => {
 
 //product data 생성하기
 router.post('/register', (req, res) => {
+    const product = {
+        name: req.body.productname,
+        price: req.body.productprice
+    }
     res.json({
-        message: 'product data 생성하기'
+        message: 'product data 생성하기',
+        createdProduct: product
     })
 })
 
