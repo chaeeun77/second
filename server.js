@@ -15,7 +15,8 @@ const mongoose = require("mongoose");
 const dbaddress = "mongodb+srv://second:codms13579@cluster0.loeyr.mongodb.net/<dbname>?retryWrites=true&w=majority"
 const dboptions = {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: true
 }
 
 mongoose
