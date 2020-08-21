@@ -5,9 +5,22 @@ const productModel = require("../models/product");
 
 //product data 불러오기
 router.get('/total', (req, res) => {
-    res.json({
-        message: 'product data 불러오기'
-    })
+    // res.json({
+    //     message: 'product data 불러오기'
+    // })
+    productModel
+        .find()
+        .then(doc => {
+            res.json({
+                count: doc.length,
+                products: doc
+            })
+        })
+        .catch(err => {(
+            res.json({
+                message: err.message
+            })
+        )})
 })
 
 //product data 생성하기
