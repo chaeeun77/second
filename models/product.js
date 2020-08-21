@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 //2번
 const productSchema = mongoose.Schema({
     name: String,
-    price: Number;
+    price: Number
 });
 
 //3번
