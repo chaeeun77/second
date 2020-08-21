@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/chaeeun77/second/issues"
   },
-  "homepage": "https://github.com/chaeeun77/second#readme"
+  "homepage": "https://github.com/chaeeun77/second#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
