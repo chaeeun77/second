@@ -80,10 +80,26 @@ router.put('/', (req, res) => {
 })
 
 //product data delete하기
-router.delete('/', (req, res) => {
-    res.json({
-        message: 'product data delete 하기'
-    })
+// router.delete('/', (req, res) => {
+//     res.json({
+//         message: 'product data delete 하기'
+//     })
+// })
+router.delete('/:productId', (req, res) => {
+    const id = req.params.productId
+
+    productModel
+        .findByIdAndDelete(id)
+        .then(result => {
+            res.json({
+                message: "deleted product at " + id
+            })
+        })
+        .catch(err => {
+            res.json({
+                message: err.message
+            })
+        })
 })
 
 module.exports = router;
