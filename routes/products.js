@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require("mongoose");
+const productModel = require("../models/product");
 
 //product data 불러오기
 router.get('/total', (req, res) => {
@@ -10,14 +12,32 @@ router.get('/total', (req, res) => {
 
 //product data 생성하기
 router.post('/register', (req, res) => {
-    const product = {
+    // const product = {
+    //     name: req.body.productname,
+    //     price: req.body.productprice
+    // }
+    // res.json({
+    //     message: 'product data 생성하기',
+    //     createdProduct: product
+    // })
+    const newProduct = new productModel({
         name: req.body.productname,
         price: req.body.productprice
-    }
-    res.json({
-        message: 'product data 생성하기',
-        createdProduct: product
     })
+
+    newProduct
+        .save()
+        .then(doc => {
+            res.json({
+                message: "saved data",
+                productInfo: doc
+            })
+        })
+        .catch(err => {
+            res.json({
+                message: err.message
+            })
+        })
 })
 
 //product data 업데이트하기
